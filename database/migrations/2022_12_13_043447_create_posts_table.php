@@ -16,11 +16,17 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('category_id');
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->nullable();
             $table->string('title');
+            $table->string('author')->nullable();
             $table->string('slug')->unique();
+            $table->string('image')->nullable();
             $table->text('excerpt');
             $table->text('body');
+            $table->enum('status',['0','1','2','3'])->default('1');
+            $table->foreignId('borrower_id')->nullable();
+            $table->date('borrow_date')->nullable();
+            $table->date('due_date')->nullable();
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });

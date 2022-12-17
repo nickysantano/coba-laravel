@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
@@ -17,9 +18,9 @@ class DashboardPostController extends Controller
      */
     public function index()
     {
-
         return view('dashboard.posts.index', [
-            'posts' => Post::where('user_id', auth()->user()->id)->get()
+            // 'posts' => Post::where('user_id', auth()->user()->id)->get()
+            'posts' => Post::all()
         ]);
     }
 
@@ -31,7 +32,8 @@ class DashboardPostController extends Controller
     public function create()
     {
         return view('dashboard.posts.create', [
-            'categories' => Category::all()
+            'categories' => Category::all(),
+            'users' => User::all()
         ]);
     }
 
@@ -43,14 +45,18 @@ class DashboardPostController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request->file('image')->store('post-images');
 
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'slug' => 'required|unique:posts',
             'category_id' => 'required',
+            'image'=>'image|file|max:5000',
             'body' => 'required',
         ]);
+
+        if($request->file('image')){
+            $validatedData['image'] = $request->file('image')->store('post-images');
+        }
 
         $validatedData['user_id'] = auth()->user()->id;
         $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
@@ -83,7 +89,8 @@ class DashboardPostController extends Controller
     {
         return view('dashboard.posts.edit', [
             'post' => $post,
-            'categories' => Category::all()
+            'categories' => Category::all(),
+            'users' => User::all()
         ]);
     }
 
@@ -99,6 +106,7 @@ class DashboardPostController extends Controller
         $rules = [
             'title' => 'required|max:255',
             'category_id' => 'required',
+            'user_id' => 'required',
             'body' => 'required',
         ];
 
@@ -108,7 +116,7 @@ class DashboardPostController extends Controller
 
         $validatedData = $request->validate($rules);
 
-        $validatedData['user_id'] = auth()->user()->id;
+        // $validatedData['user_id'] = auth()->user()->id;
         $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
 
         Post::where('id', $post->id)

@@ -14,7 +14,7 @@
     {{-- My Style CSS --}}
     <link rel="stylesheet" href="/css/style.css">
 
-    <title>WPU Blog | {{ $title }}</title>
+    <title>Perpustakaan | {{ $title }}</title>
   </head>
   <body>
 

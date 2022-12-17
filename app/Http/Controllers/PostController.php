@@ -24,9 +24,9 @@ class PostController extends Controller
             $title = ' by ' . $author->name;
         }
         return view('posts', [
-            "title" => "All Posts" . $title,
+            "title" => "All Books" . $title,
             "active" => 'posts',
-            "posts" =>Post::latest()->filter(request(['search', 'category', 'author']))->paginate(7)->withQueryString()
+            "posts" =>Post::latest()->filter(request(['search', 'category', 'author', 'status']))->paginate(7)->withQueryString(),
         ]);
 
     }

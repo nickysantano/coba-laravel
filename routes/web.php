@@ -28,17 +28,15 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/about', function () {
-    return view('about', [
-        "title" => "About",
-        'active' => 'about',
-        "name" => "Nicky Santano",
-        "email" => "nicky.santano@gmail.com",
-        "image" => "img/nicky.jpg"
-    ]);
-});
-
-
+// Route::get('/about', function () {
+//     return view('about', [
+//         "title" => "About",
+//         'active' => 'about',
+//         "name" => "Nicky Santano",
+//         "email" => "nicky.santano@gmail.com",
+//         "image" => "img/nicky.jpg"
+//     ]);
+// });
 
 Route::get('/posts', [PostController::class, 'index']);
 
@@ -47,7 +45,7 @@ Route::get('posts/{post:slug}', [PostController::class, 'show']);
 
 Route::get('/categories', function(){
     return view('categories', [
-        'title'=>'Post Categories',
+        'title'=>'Book Categories',
         'active' => 'categories',
         'categories'=>Category::all()
     ]);

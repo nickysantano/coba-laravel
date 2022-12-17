@@ -42,6 +42,10 @@ class Post extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function borrower(){
+        return $this->belongsTo(User::class, 'borrower_id');
+    }
+
     public function getRouteKeyName(){
         return 'slug';
     }

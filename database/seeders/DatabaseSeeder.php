@@ -3,10 +3,11 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
-use App\Models\User;
-use App\Models\Category;
 use App\Models\Post;
+use App\Models\User;
+use App\Models\Status;
+use App\Models\Category;
+use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -24,11 +25,12 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        // User::create([
-        //     'name'=>'Nicky Santano',
-        //     'email'=>'nicky.santano@gmail.com',
-        //     'password'=>bcrypt('1234')
-        // ]);
+        User::create([
+            'name'=>'Nicky Santano',
+            'username'=>'nickysantano',
+            'email'=>'nicky.santano@gmail.com',
+            'password'=>bcrypt('1234')
+        ]);
 
         // User::create([
         //     'name'=>'Dedo Ferdian',
@@ -49,6 +51,14 @@ class DatabaseSeeder extends Seeder
         Category::create([
             'name'=>'Web Design',
             'slug'=>'web-design'
+        ]);
+
+        Status::create([
+            'name'=>'Not Available',
+        ]);
+
+        Status::create([
+            'name'=>'Available',
         ]);
 
         Post::factory(20)->create();

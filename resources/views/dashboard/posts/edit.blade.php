@@ -19,6 +19,7 @@
                     </div>
                 @enderror
             </div>
+
             <div class="mb-3">
                 <label for="slug" class="form-label">Slug</label>
                 <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug"
@@ -30,11 +31,35 @@
                 @enderror
             </div>
 
+            {{-- <div class="mb-3">
+                <label for="slug" class="form-label">Author</label>
+                <input type="text" class="form-control @error('slug') is-invalid @enderror" id="author" name="author"
+                    required value="{{ $post->author->name }}">
+                @error('slug')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div> --}}
+
+            <div class="mb-3">
+                <label for="user" class="form-label">Author</label>
+                <select class="form-select" name="user_id">
+                    @foreach ($users as $user)
+                        @if (old('user_id', $user->user_id) == $user->id)
+                            <option value="{{ $user->id }}" selected>{{ $user->name }}</option>
+                        @else
+                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                        @endif
+                    @endforeach
+                </select>
+            </div>
+
             <div class="mb-3">
                 <label for="category" class="form-label">Category</label>
                 <select class="form-select" name="category_id">
                     @foreach ($categories as $category)
-                        @if (old('category_id', $post->category_id) === $category->id)
+                        @if (old('category_id', $post->category_id) == $category->id)
                             <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
                         @else
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -52,7 +77,7 @@
                 <trix-editor input="body"></trix-editor>
             </div>
 
-            <button type="submit" class="btn btn-primary">Create Post</button>
+            <button type="submit" class="btn btn-primary">Edit Post</button>
         </form>
     </div>
 

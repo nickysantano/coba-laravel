@@ -10,14 +10,22 @@
                         class='text-decoration-none'>{{ $post->author->name }}</a> in <a
                         href="/posts?category={{ $post->category->slug }}">{{ $post->category->name }}</a></p>
 
-                <img src="https://source.unsplash.com/random/1200x400?{{ $post->category->name }}" alt="{{ $post->category->name }}" class="img-fluid">
+                @if ($post->image)
+                    <div style="max-height: 400px; overflow:hidden;">
+                        <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->category->name }}"
+                            alt="{{ $post->category->name }}" class="img-fluid">
+                    </div>
+                @else
+                    <img src="https://source.unsplash.com/random/1200x400?{{ $post->category->name }}"
+                        alt="{{ $post->category->name }}" class="img-fluid">
+                @endif
 
                 <article class="my-3 fs-5">
                     {!! $post->body !!}
                 </article>
 
 
-                <a href="/posts" class='d-block mt-3'>Back to posts</a>
+                <a href="/posts" class='d-block mt-3'>Back to Book List</a>
             </div>
         </div>
     </div>
