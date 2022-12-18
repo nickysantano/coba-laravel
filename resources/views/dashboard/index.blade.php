@@ -18,6 +18,7 @@
                 <tr>
                     <th scope="col">Book</th>
                     <th scope="col">Borrower</th>
+                    {{-- <th scope="col">Status</th> --}}
                     <th scope="col">Date Borrowed</th>
                     <th scope="col">Due Date</th>
                     <th scope="col">Action</th>
@@ -28,6 +29,26 @@
                     <tr>
                         <td>{{ $post->title }}</td>
                         <td>{{ $post->borrower()->first()->name }} </td>
+
+                        {{-- <td>{{ $post->status }}
+                            @switch($post->status)
+                                @case(0)
+                                    Available
+                                @break
+
+                                @case(1)
+                                    Borrowed
+                                @break
+
+                                @case(2)
+                                    Due
+                                @break
+
+                                @default
+                                    Error, Try Again
+                            @endswitch
+                        </td> --}}
+
                         <td>{{ $post->borrow_date }} </td>
                         <td>{{ $post->due_date }} </td>
 

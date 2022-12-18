@@ -30,19 +30,6 @@
                 @enderror
             </div>
 
-            {{-- <div class="mb-3">
-                <label for="user" class="form-label">Author</label>
-                <select class="form-select" name="user_id">
-                    @foreach ($users as $user)
-                        @if (old('user_id') === $user->id)
-                            <option value="{{ $user->id }}" selected>{{ $user->name }}</option>
-                        @else
-                            <option value="{{ $user->id }}">{{ $user->name }}</option>
-                        @endif
-                    @endforeach
-                </select>
-            </div> --}}
-
             <div class="mb-3">
                 <label for="category" class="form-label">Category</label>
                 <select class="form-select" name="category_id">
