@@ -6,7 +6,7 @@
     </div>
 
     <div class="col-lg-8">
-        <form method="post" action="/list-book" class="mb-5" enctype="multipart/form-data">
+        <form method="post" action="{{ route('dashboard.store') }}" class="mb-5" enctype="multipart/form-data">
             @csrf
 
             <div class="mb-3">
@@ -25,7 +25,7 @@
             <div class="mb-3">
                 <label for="post" class="form-label">Books</label>
                 <select class="form-select" name="post_id">
-                    @foreach ($books as $book)
+                    @foreach ($posts as $book)
                         @if (old('post_id') === $book->id)
                             <option value="{{ $book->id }}" selected>{{ $book->name }}</option>
                         @else

@@ -54,10 +54,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Status::create([
-            'name'=>'Not Available',
-        ]);
-
-        Status::create([
             'name'=>'Available',
         ]);
 

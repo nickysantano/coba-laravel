@@ -33,19 +33,28 @@
                         <td>{{ $post->due_date }} </td>
 
                         <td>
-                            <a href="/list-book/{{ $post->slug }}" class="badge bg-info"><span
-                                    data-feather="eye"></span></a>
+                            {{-- <a href="/list-book/{{ $post->slug }}" class="badge bg-info"><span
+                                    data-feather="eye"></span></a> --}}
 
-                            <a href="/list-book/{{ $post->slug }}/edit" class="badge bg-warning"><span
-                                    data-feather="edit"></span></span></a>
+                            {{-- <a href="/list-book/{{ $post->slug }}/edit" class="badge bg-warning"><span
+                                    data-feather="edit"></span></span></a> --}}
 
-                            <form action="/list-book/{{ $post->slug }}" method="post" class="d-inline">
+                            <form action="{{ route('dashboard.destroy', $post->id) }}" method="post" class="d-inline">
                                 @method('delete')
                                 @csrf
                                 <button class="badge bg-danger border-0"
-                                    onclick="return confirm('Are you sure deleting this data?')"><span
+                                    onclick="return confirm('Are you sure removing this data?')"><span
                                         data-feather="delete"></button>
                             </form>
+
+                            {{-- <form action="{{ route('librarian.resolve', $post->id) }}" method="POST"
+                                enctype='multipart/form-data'>
+                                @method('PUT')
+                                @csrf
+                                <input name="id" type="hidden" value={{ $post->id }}>
+                                <button type="submit" class="btn bg-maincolor text-white"><i class="bi bi-x-square"></i>
+                                </button>
+                            </form> --}}
                         </td>
                     </tr>
                 @endforeach
