@@ -7,7 +7,7 @@
 
     <div class="col-lg-8">
         <form method="post" action="/list-book/{{ $post->slug }}" class="mb-5">
-            @method('put')
+            @method('post')
             @csrf
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>

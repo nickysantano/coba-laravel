@@ -48,7 +48,7 @@ class DashboardController extends Controller
         $posts->update(
             [
                 'status' => '1',
-                'borrower_id' => $request-> user_id,
+                'borrower_id' => $request->borrower_id,
                 'borrow_date' => Carbon::now()->format('Y-m-d'),
                 'due_date' => Carbon::now()->addDays(7)->format('Y-m-d')
             ]
@@ -78,6 +78,7 @@ class DashboardController extends Controller
      */
     public function edit(Post $post)
     {
+
     }
 
     /**
@@ -102,9 +103,6 @@ class DashboardController extends Controller
      */
     public function destroy($id)
     {
-        // Post::destroy($post->id->borrower_id);\
-
-        // dd($id);
         $post = Post::find($id);
 
         $post->update([

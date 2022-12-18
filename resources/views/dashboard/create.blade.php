@@ -10,8 +10,8 @@
             @csrf
 
             <div class="mb-3">
-                <label for="category" class="form-label">Borrower</label>
-                <select class="form-select" name="category_id">
+                <label for="borrower" class="form-label">Borrower</label>
+                <select class="form-select" name="borrower_id">
                     @foreach ($borrowers as $borrower)
                         @if (old('category_id') === $borrower->id)
                             <option value="{{ $borrower->id }}" selected>{{ $borrower->name }}</option>
@@ -26,10 +26,11 @@
                 <label for="post" class="form-label">Books</label>
                 <select class="form-select" name="post_id">
                     @foreach ($posts as $book)
-                        @if (old('post_id') === $book->id)
-                            <option value="{{ $book->id }}" selected>{{ $book->name }}</option>
+
+
+                        @if ($book->borrower_id === null)
+                            <option value="{{ $book->id }}">{{ $book->title }}</option>
                         @else
-                            <option value="{{ $book->id }}">{{ $book->name }}</option>
                         @endif
                     @endforeach
                 </select>

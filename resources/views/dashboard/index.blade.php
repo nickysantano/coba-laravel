@@ -26,18 +26,12 @@
             <tbody>
                 @foreach ($posts as $post)
                     <tr>
-                        {{-- <td>{{ $loop->iteration }}</td> --}}
                         <td>{{ $post->title }}</td>
                         <td>{{ $post->borrower()->first()->name }} </td>
                         <td>{{ $post->borrow_date }} </td>
                         <td>{{ $post->due_date }} </td>
 
                         <td>
-                            {{-- <a href="/list-book/{{ $post->slug }}" class="badge bg-info"><span
-                                    data-feather="eye"></span></a> --}}
-
-                            {{-- <a href="/list-book/{{ $post->slug }}/edit" class="badge bg-warning"><span
-                                    data-feather="edit"></span></span></a> --}}
 
                             <form action="{{ route('dashboard.destroy', $post->id) }}" method="post" class="d-inline">
                                 @method('delete')
