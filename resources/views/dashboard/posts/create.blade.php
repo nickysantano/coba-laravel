@@ -6,7 +6,7 @@
     </div>
 
     <div class="col-lg-8">
-        <form method="post" action="/dashboard/posts" class="mb-5" enctype="multipart/form-data">
+        <form method="post" action="/list-book" class="mb-5" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
@@ -84,7 +84,7 @@
         const slug = document.querySelector('#slug');
 
         title.addEventListener('change', function() {
-            fetch('/dashboard/posts/checkSlug?title=' + title.value)
+            fetch('/list-book/checkSlug?title=' + title.value)
                 .then(response => response.json())
                 .then(data => slug.value = data.slug)
         });

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('category_id');
             $table->foreignId('user_id')->nullable();
             $table->string('title');
-            $table->string('author')->nullable();
+            // $table->string('author')->nullable();
             $table->string('slug')->unique();
             $table->string('image')->nullable();
             $table->text('excerpt');

@@ -8,7 +8,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('home') ? 'active' : '' }}" href="/home">Home</a>
+                    <a class="nav-link {{ request()->is('home') ? 'active' : '' }}" href="/">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ request()->is('posts') ? 'active' : '' }}" href="/posts">Books</a>

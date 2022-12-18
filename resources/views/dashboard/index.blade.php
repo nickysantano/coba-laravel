@@ -16,8 +16,6 @@
         <table class="table table-striped table-sm">
             <thead>
                 <tr>
-                    {{-- <th scope="col">#</th> --}}
-                    {{-- <th scope="col">Title</th> --}}
                     <th scope="col">Book</th>
                     <th scope="col">Borrower</th>
                     <th scope="col">Date Borrowed</th>
@@ -35,13 +33,13 @@
                         <td>{{ $post->due_date }} </td>
 
                         <td>
-                            <a href="/dashboard/posts/{{ $post->slug }}" class="badge bg-info"><span
+                            <a href="/list-book/{{ $post->slug }}" class="badge bg-info"><span
                                     data-feather="eye"></span></a>
 
-                            <a href="/dashboard/posts/{{ $post->slug }}/edit" class="badge bg-warning"><span
+                            <a href="/list-book/{{ $post->slug }}/edit" class="badge bg-warning"><span
                                     data-feather="edit"></span></span></a>
 
-                            <form action="/dashboard/posts/{{ $post->slug }}" method="post" class="d-inline">
+                            <form action="/list-book/{{ $post->slug }}" method="post" class="d-inline">
                                 @method('delete')
                                 @csrf
                                 <button class="badge bg-danger border-0"

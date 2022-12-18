@@ -8,14 +8,13 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('dashboard/posts*') ? 'active' : '' }}" href="/dashboard/posts">
+                <a class="nav-link {{ Request::is('list-book*') ? 'active' : '' }}" href="/list-book">
                     <span data-feather="file-text" class="align-text-bottom"></span>
                     Book List
                 </a>
             </li>
 
         </ul>
-
 
     </div>
 </nav>

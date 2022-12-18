@@ -12,7 +12,7 @@
     @endif
 
     <div class="table-responsive col-lg-8">
-        <a href="/dashboard/posts/create" class="btn btn-primary m-3">Insert New Book</a>
+        <a href="/list-book/create" class="btn btn-primary m-3">Insert New Book</a>
         <table class="table table-striped table-sm">
             <thead>
                 <tr>
@@ -55,13 +55,13 @@
                         </td>
 
                         <td>
-                            <a href="/dashboard/posts/{{ $post->slug }}" class="badge bg-info"><span
+                            <a href="/list-book/{{ $post->slug }}" class="badge bg-info"><span
                                     data-feather="eye"></span></a>
 
-                            <a href="/dashboard/posts/{{ $post->slug }}/edit" class="badge bg-warning"><span
+                            <a href="/list-book/{{ $post->slug }}/edit" class="badge bg-warning"><span
                                     data-feather="edit"></span></span></a>
 
-                            <form action="/dashboard/posts/{{ $post->slug }}" method="post" class="d-inline">
+                            <form action="/list-book/{{ $post->slug }}" method="post" class="d-inline">
                                 @method('delete')
                                 @csrf
                                 <button class="badge bg-danger border-0"
