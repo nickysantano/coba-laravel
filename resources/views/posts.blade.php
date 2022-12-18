@@ -51,18 +51,14 @@
                         {{-- <br>Availability: {{ $post->status }}</a> --}}
                         @switch($posts[0]->status)
                             @case(0)
-                                <br>Availability: Not Available
-                            @break
-
-                            @case(1)
                                 <br>Availability: Available
                             @break
 
-                            @case(2)
+                            @case(1)
                                 <br>Availability: Borrowed
                             @break
 
-                            @case(3)
+                            @case(2)
                                 <br>Availability: Due
                             @break
 

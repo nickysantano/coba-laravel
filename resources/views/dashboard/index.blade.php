@@ -12,7 +12,7 @@
     @endif
 
     <div class="table-responsive col-lg-8">
-        {{-- <a href="/dashboard/posts/create" class="btn btn-primary m-3">Insert New Book</a> --}}
+        <a href="/dashboard/create" class="btn btn-primary m-3">Insert New Borrower</a>
         <table class="table table-striped table-sm">
             <thead>
                 <tr>
@@ -28,7 +28,7 @@
                     <tr>
                         {{-- <td>{{ $loop->iteration }}</td> --}}
                         <td>{{ $post->title }}</td>
-                        <td>{{ $post->borrower()->get('name') }} </td>
+                        <td>{{ $post->borrower()->first()->name }} </td>
                         <td>{{ $post->borrow_date }} </td>
                         <td>{{ $post->due_date }} </td>
 

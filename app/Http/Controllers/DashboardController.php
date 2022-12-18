@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -29,7 +30,10 @@ class DashboardController extends Controller
      */
     public function create()
     {
-
+        return view('dashboard.create', [
+            'books' => Post::all(),
+            'borrowers' => User::all()
+        ]);
     }
 
     /**
@@ -77,37 +81,23 @@ class DashboardController extends Controller
     public function update(Request $request, Post $id)
     {
         $posts = Post::find($id);
-        $posts = Post::updateOrCreate(
-            [
-                'id' => $posts->id,
-                'name' => $posts->name,
-            ],
-            [
-                'status' => '1',
-                'user_id' => $request->user_id,
-                'borrow_date' => Carbon::now() -> format('Y-m-d'),
-                'due_date' => Carbon::now() -> addDays(7)->format('Y-m-d')
-            ]
-        );
+        if(isset($request['user_id']) && $request['status'] == '1'){
+            $posts = Post::updateOrCreate(
+                [
+                    'id' => $posts->id,
+                    'name' => $posts->name,
+                ],
+                [
+                    'status' => '1',
+                    'user_id' => $request->user_id,
+                    'borrow_date' => Carbon::now() -> format('Y-m-d'),
+                    'due_date' => Carbon::now() -> addDays(7)->format('Y-m-d')
+                ]
+            );
+        }
+
 
         return redirect('/dashboard')->with('success', 'Your post has been updated!');
-
-        // $posts = Post::find($id);
-        // $posts = Post::updateOrCreate(
-        //     [
-        //         'id' => $posts->id,
-        //         'name' => $posts->name,
-        //     ],
-        //     [
-        //         'status' => '1',
-        //         'user_id' => $request->user_id,
-        //         'borrow_date' => Carbon::now() -> format('Y-m-d'),
-        //         'due_date' => Carbon::now() -> addDays(7)->format('Y-m-d')
-        //     ]
-        // );
-
-        // return redirect()->route('dashboard.index')
-        //     ->with('success', 'Book updated successfully');
     }
 
     /**

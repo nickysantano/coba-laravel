@@ -34,18 +34,14 @@
                         <td>
                             @switch($post->status)
                                 @case(0)
-                                    Not Available
-                                @break
-
-                                @case(1)
                                     Available
                                 @break
 
-                                @case(2)
+                                @case(1)
                                     Borrowed
                                 @break
 
-                                @case(3)
+                                @case(2)
                                     Due
                                 @break
 
